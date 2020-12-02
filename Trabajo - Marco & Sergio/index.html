@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DGT - Dirección General de Tráfico</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="estilo.css">
+    <!--fuente-->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+	<!--titulo-->
+	<div class="jumbotron jumbotron-fluid py-4 bg-primary my-0">
+		<div class="container-fluid justify-content-start">
+			<div class="row">
+				<div class="col-2">
+				<a href="#" onclick="mostrarFrm('bienvenida'); return false">
+					<img src="logo.jpg" class="img-fluid">
+				</a>
+				</div>
+				<div class="col d-flex align-items-end">
+					<h1 class="text-white">DGT</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--menu-->
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuCollapse" aria-controls="menuCollapse" aria-expanded="false" aria-label="Toggle navigation">
+   	 		<span class="navbar-toggler-icon"></span>
+  		</button>
+		<div class="collapse navbar-collapse" id="menuCollapse">
+		    <ul class="navbar-nav">
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divAltaConductor'); return false">Alta Conductor</a>
+		      </li>
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divAltaGuardia'); return false">Alta Guardia Civil</a>
+		      </li>
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divAltaMulta'); return false">Registrar multa</a>
+		      </li>
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divPagaMulta'); return false">Pagar multa</a>
+		      </li>
+			  <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divImprimeMulta'); return false">Imprimir multa</a>
+		      </li>				      
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Listados
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a a href="#" class="dropdown-item" id="mostrarListadoSaldo">Saldo conductor</a>
+		          <a a href="#" class="dropdown-item" id="mostrarListadoPuntos">Puntos conductor</a>
+		          <a a href="#" class="dropdown-item" id="mostrarListadoMultaGuard">Multas/Guardia</a>
+				  <a href="#" class="dropdown-item" onclick="mostrarFrm('filtroMultasPeriodo');"; return false">Multas/Fecha</a>
+				  <a href="#" class="dropdown-item" id="mostrarListadoConductores">Conductores</a> 
+				  <a href="#" class="dropdown-item" id="mostrarListadoGuardia">Guardias civiles</a>
+		          <div class="dropdown-divider"></div>
+		        </div>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
+	<!--contenido-->
+	<div class="container-fluid bg-light p-4">
+		<div class="row" id="bienvenida">
+			<div class="col">
+				<h1>Bienvenido al asistente</h1>
+				<p>En el menú puede ver las distintas operaciones que puede realizar.</p>
+			</div>
+		</div>
+		<div class="row d-none" id="divAltaConductor">
+			<div class="col-7">
+				<h3>Alta conductor</h3>
+				<!--formulario alta conductor-->
+				<form class="m-2" id="frmAltaConductor" name="frmAltaConductor">
+				  <div class="form-group">
+				    <label for="txtNIF" class="mb-0">NIF:</label>
+				    <input type="text" class="form-control" id="txtNIF" name="txtNIF">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtNombre" class="mb-0">Nombre:</label>
+				    <input type="text" class="form-control" id="txtNombre" name="txtNombre">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtApellidos" class="mb-0">Apellidos:</label>
+				    <input type="text" class="form-control" id="txtApellidos" name="txtApellidos">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtDireccion" class="mb-0">Direccion:</label>
+				    <input type="text" class="form-control" id="txtFormaPago" name="txtDireccion">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtCaducidadCarnet" class="mb-0">Caducidad carnet:</label>
+				    <input type="date" class="form-control" id="txtCaducidadCarnet" name="txtCaducidadCarnet">
+				  </div>
+				  <input type="button" class="btn btn-primary" id="btnAltaConductor" name="btnAltaConductor" onclick="altaConductor();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divAltaGuardia">
+			<div class="col-7">
+				<h3>Alta Guardia</h3>
+				<!--formulario alta guardia-->
+				<form class="m-2" id="frmAltaGuardia">
+					
+				<div class="form-group">
+				    <label for="txtNIF" class="mb-0">NIF:</label>
+				    <input type="text" class="form-control" id="txtNIF" name="txtNIF">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtNombre" class="mb-0">Nombre:</label>
+				    <input type="text" class="form-control" id="txtNombre" name="txtNombre">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtApellidos" class="mb-0">Apellidos:</label>
+				    <input type="text" class="form-control" id="txtApellidos" name="txtApellidos">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtDireccion" class="mb-0">Direccion:</label>
+				    <input type="text" class="form-control" id="txtDireccion" name="txtDireccion">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtPuesto" class="mb-0">Puesto: </label>
+				    <input type="text" class="form-control" id="txtPuesto" name="txtPuesto">
+				  </div>
+				  <input type="button" class="btn btn-primary" id="btnAltaGuardia" name="btnAltaGuardia" onclick="altaGuardia();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divAltaMulta">
+			<div class="col-7">
+				<h3>Registrar multa</h3>
+				<!--formulario lalta multa-->
+				<form class="m-2" id="frmAltaMulta">
+				<div class="form-group">
+				    <label for="txtID" class="mb-0">ID multa:</label>
+				    <input type="text" class="form-control" id="txtID" name="txtID">
+				  </div>
+				<div class="form-group">
+				    <label for="lstConductor" class="mb-0">Selección de conductor:</label>
+				    <select id="lstConductor"  name="lstConductor"></select>
+				  </div>
+				<div class="form-group">
+				    <label for="lstGuardia" class="mb-0">Selección de guardia:</label>
+				    <select id="lstGuardia"  name="lstGuardia"></select>
+				  </div>  
+				<div class="form-group">
+				    <label for="txtImporte" class="mb-0">Importe:</label>
+				    <input type="text" class="form-control" id="txtImporte" name="txtImporte">
+				  </div> 
+				 <!-- Multiple Radios -->
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="rbtPagado">Pagado</label>
+                            <div class="col-xs-4">
+                                <div class="radio">
+                                    <label for="rbtPagado-0">
+                                        <input name="rbtPagado" id="rbtPagado-0" value="yes"
+                                            checked="checked" type="radio">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="rbtPagado-1">
+                                        <input name="rbtPagado" id="rbtPagado-1" value="no"
+                                            type="radio">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-6">
+					<div class="form-group">
+						<label>Tipo</label>
+						<select class="form-control" id="tipo" onchange="formTipo()">
+						    <option>Seleccione un tipo....</option>
+							<option>Leve</option>
+							<option>Grave</option>
+						</select>
+					</div>
+					<!---------------------------------------------->
+					<!--------------------Leve------------------->
+					<!---------------------------------------------->
+					<div id="leve" class="form-group">
+						<div class="form-group">
+							<label for="rbtBonificada">Bonificada</label><br>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="siABS" name="abs" value="siBoni" class="custom-control-input" checked>
+								<label class="custom-control-label" id="siBoni" for="siBoni">Si</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="noABS" name="abs" value="noBoni" class="custom-control-input">
+								<label class="custom-control-label" id="noBoni" for="noBoni">No</label>
+							</div>
+						</div>							
+					</div>
+					<!---------------------------------------------->
+					<!--------------------Grave----------------------->
+					<!---------------------------------------------->
+					<div id="grave" class="form-group">
+						<label>Puntos: </label>
+						<input type="number" class="form-control" id="puntos" name="puntos">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="txtDescripcion" class="mb-0">Descripcion:</label>
+				    <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion">
+				  </div> 
+				  <div class="form-group">
+				    <label for="txtFechaMulta" class="mb-0">Fecha:</label>
+				    <input type="date" class="form-control" id="txtFechaMulta" name="txtFechaMulta">
+				  </div>
+					<input type="button" class="btn btn-primary" id="btnAltaMulta" name="btnAltaMulta" onclick="altaMulta();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divPagaMulta">
+			<div class="col-7">
+				<h3>Paga multa</h3>
+				<!--formulario lalta convite-->
+				<form class="m-2" id="frmPagaMulta">
+				<div class="form-group">
+				    <label for="txtIDMulta" class="mb-0">NIF MULTA:</label>
+				    <input type="text" class="form-control" id="txtIDMulta" name="txtIDMulta">
+				  </div>
+					<input type="button" class="btn btn-primary" id="btnMultaPagada" name="btnMultaPagada" onclick="pagaMulta();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		
+		<div class="row d-none" id="divImprimeMulta">
+			<div class="col-7">
+				<h3>Imprimir multa</h3>
+				<!--formulario lalta convite-->
+				<form class="m-2" id="frmImprimeMulta">
+				<div class="form-group">
+				    <label for="txtIDMulta" class="mb-0">ID MULTA:</label>
+				    <input type="text" class="form-control" id="txtIDMulta" name="txtIDMulta">
+				  </div>
+					<input type="button" class="btn btn-primary" id="btnImprimirMulta" name="btnImprimirMulta" onclick="listarMultas();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		
+		<div class="row d-none" id="filtroMultasPeriodo">
+			<div class="col-7">
+				<h1>MULTAS POR PERIODO</h1>
+			<div class="row justify-content-center">
+				<div class="col-12">
+					<form id="frmBuscarMultaFecha">
+						<div class="form-group">
+						<label for="form-control" class="mb-0">De:</label>
+						<input type="date" class="form-control" id="fecha1" name="fecha1">
+						</div>
+						<div class="form-group">
+							<label>A: </label>
+							<input type="date" class="form-control" id="fecha2" name="fecha2">
+						</div>
+						<center><input type="button" class="btn btn-dark btn-lg" href="#" onclick="buscarMultaFecha()" value="BUSCAR"></input></center>
+					</form>
+				</div>
+			</div>
+			</div>
+		</div>	
+		
+	</div>
+	
+
+
+
+
+
+
+    <!--Para los listados:-->
+    <div class="container col-8" id="body">
+      <table class='table table-striped table-hover' id="tabla" ></table>
+      
+    </div>
+      
+	  <!---------------------------------------------->
+	<!------------Multas POR PERIODO-------------->
+	<!---------------------------------------------->
+	
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+
+<!--footer-->
+<div class="jumbotron jumbotron-fluid text-center p-2 mb-0 bg-dark sticky-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<p class="text-white-50">Apliación gestión DGT</p>
+				<p class="text-white-50">Copyright 2020. All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--objetos-->
+<script type="text/javascript" src="objetos.js"></script>
+<!--codigo-->
+<script type="text/javascript"" src="acciones.js"></script>
+
+</body>
+</html>
